@@ -156,5 +156,5 @@ io.on('connection', (socket) => {
 });
 
 // --- 4. START THE SERVER ---
-const PORT = 1000;
+const PORT = 3000;
 server.listen(PORT, () => console.log(`DyTAL v2.0 server (Complete) running on https://localhost:${PORT}`));
