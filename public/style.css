@@ -1,0 +1,87 @@
+/* public/style.css */
+:root {
+    --primary-color: #007bff;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-grey: #f8f9fa;
+    --medium-grey: #e9ecef;
+    --dark-grey: #6c757d;
+    --text-color: #333;
+    --bg-color: #f0f2f5;
+    --panel-bg: #fff;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2rem;
+}
+
+.container {
+    background: var(--panel-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1800px;
+    box-sizing: border-box;
+}
+
+#login-container { text-align: center; max-width: 400px; margin: auto; }
+.status-message { margin-top: 1rem; font-weight: bold; min-height: 20px; }
+.status-message.error { color: var(--danger-color); }
+.status-message.success { color: var(--success-color); }
+
+h1, h2, h3 { color: #1c2b36; }
+h2 { color: #555; font-weight: 400; }
+h3 { border-bottom: 2px solid var(--medium-grey); padding-bottom: 0.5rem; margin-top: 0; }
+
+select, button { padding: 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem; width: 100%; box-sizing: border-box; margin-bottom: 1rem; }
+button { background-color: var(--primary-color); color: white; font-weight: bold; border: none; cursor: pointer; transition: background-color 0.2s; }
+button:hover { background-color: #0056b3; }
+.danger-button { background-color: var(--danger-color); }
+.danger-button:hover { background-color: #c82333; }
+
+.hidden { display: none; }
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem; }
+#user-info { font-size: 1.1rem; display: flex; align-items: center; gap: 12px; }
+#cert-status { font-size: 1.2rem; }
+.status-indicator { display: inline-block; width: 12px; height: 12px; border-radius: 50%; }
+.status-indicator.online { background-color: var(--success-color); }
+.status-indicator.offline { background-color: var(--dark-grey); }
+
+.dashboard-grid { display: grid; grid-template-columns: 1fr 1.5fr 1.5fr; gap: 2rem; }
+.panel-group { display: flex; flex-direction: column; gap: 2rem; }
+.panel { background-color: var(--light-grey); padding: 1.5rem; border-radius: 6px; border: 1px solid var(--medium-grey); display: flex; flex-direction: column; }
+.action-group { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+.action-group input[type="checkbox"] { width: auto; }
+
+.shtp-display { background-color: #e9ecef; padding: 10px; border-radius: 4px; margin-bottom: 1rem; text-align: center; }
+#shtp-time { font-family: 'Courier New', Courier, monospace; font-weight: bold; color: var(--primary-color); }
+#presence-list, #ledger-log, #aegis-log, #transaction-tracker { flex-grow: 1; overflow-y: auto; max-height: 350px; padding-right: 10px; }
+.presence-item, .log-entry { padding: 0.75rem; border-radius: 4px; margin-bottom: 0.5rem; background: var(--panel-bg); border: 1px solid #eee; }
+.presence-item.flagged { background-color: #fff3cd; border-left: 5px solid var(--warning-color); font-weight: bold; }
+.log-entry { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; }
+.log-entry.status-GRANTED { border-left: 5px solid var(--success-color); }
+.log-entry.status-DENIED { border-left: 5px solid var(--danger-color); }
+.log-entry.type-SYSTEM { border-left: 5px solid var(--dark-grey); font-style: italic; color: #555; }
+.log-details { flex-grow: 1; }
+.log-reason { font-size: 0.85rem; color: #666; width: 100%; }
+.shtp-validation { font-size: 0.8rem; font-family: monospace; color: var(--dark-grey); background-color: #f0f2f5; padding: 2px 5px; border-radius: 3px; }
+.shtp-validation.fail { color: var(--danger-color); font-weight: bold; }
+.aegis-panel { background-color: #fff3cd; border-color: var(--warning-color); }
+#aegis-log .log-entry { border-left-color: var(--warning-color); }
+
+/* Transaction Tracker Styles */
+.transaction-card { background: white; border: 1px solid var(--medium-grey); border-left: 5px solid var(--info-color); padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+.transaction-card .title { font-weight: bold; }
+.transaction-card .status { font-style: italic; color: var(--dark-grey); margin: 0.5rem 0; }
+.progress-bar { width: 100%; background-color: var(--medium-grey); border-radius: 10px; overflow: hidden; height: 10px; }
+.progress-bar-inner { height: 100%; width: 0%; background-color: var(--info-color); transition: width 0.5s ease; }
+.transaction-card.completed { border-left-color: var(--success-color); }
+.transaction-card.completed .progress-bar-inner { background-color: var(--success-color); }
+.placeholder { color: var(--dark-grey); text-align: center; padding-top: 2rem; }

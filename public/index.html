@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DyTAL v2.0 - Secure Access Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-container" class="container">
+        <h1>DyTAL v2.0</h1>
+        <h2>Secure Access Portal</h2>
+        <select id="employee-select">
+            <option value="">-- Select Your Employee ID --</option>
+            <option value="EMP101">EMP101 (Trader)</option>
+            <option value="EMP102">EMP102 (Trader)</option>
+            <option value="EMP103">EMP103 (Analyst)</option>
+            <option value="EMP201">EMP201 (Compliance)</option>
+            <option value="EMP202">EMP202 (Compliance)</option>
+            <option value="EMP301">EMP301 (IT Admin)</option>
+             <option value="EMP104">EMP104 (Trader)</option>
+            <option value="EMP105">EMP105 (Analyst)</option>
+            <option value="EMP106">EMP106 (Analyst)</option>
+            <option value="EMP107">EMP107 (Trader)</option>
+        </select>
+        <button id="login-button">Login & Go Online</button>
+        <div id="login-status" class="status-message"></div>
+    </div>
+
+    <div id="dashboard-container" class="container hidden">
+        <header>
+            <h1>DyTAL Dashboard</h1>
+            <div id="user-info">
+                Welcome, <span id="current-user-id"></span> (<span id="current-user-role"></span>)
+                <span id="cert-status" title="Certificate Status"></span>
+                <span class="status-indicator online"></span> Online
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <div class="panel">
+                <h3>Actions</h3>
+                <div class="shtp-display">
+                    <div>Your SHTP Time:</div>
+                    <code id="shtp-time"></code>
+                </div>
+                <div class="action-group">
+                    <select id="resource-select">
+                         <option value="RES-RPT-QTR">Quarterly Report (Low)</option>
+                         <option value="RES-DB-CUST">Customer Database (Medium)</option>
+                         <option value="RES-API-TRADE">Trade Execution API (High)</option>
+                         <option value="RES-SYS-LOGS">System Logs (High)</option>
+                    </select>
+                    <button id="request-access-button">Request Access</button>
+                </div>
+                <div class="action-group">
+                    <input type="checkbox" id="expired-shtp-check">
+                    <label for="expired-shtp-check">Use Expired SHTP (Test)</label>
+                </div>
+                <div class="action-group">
+                    <button id="malicious-button" class="danger-button">Act Maliciously (Test Anomaly)</button>
+                </div>
+                <hr>
+                <h3>Network Presence (DPON)</h3>
+                <div id="presence-list"></div>
+            </div>
+
+            <div class="panel-group">
+                <div class="panel">
+                    <h3>DyTAL Ledger (Live)</h3>
+                    <div id="ledger-log"></div>
+                </div>
+                <div class="panel">
+                    <h3>Transaction Tracker</h3>
+                    <div id="transaction-tracker">
+                        <div class="placeholder">Low-risk transactions will appear here.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel aegis-panel">
+                <h3>Aegis Guard Room Log</h3>
+                <div id="aegis-log"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
